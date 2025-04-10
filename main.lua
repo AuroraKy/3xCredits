@@ -115,5 +115,247 @@ SMODS.Gradient({
         self[2] = math.max(self[3], self[1])
 	end
 })
+
+-- Tests
+
+-- SMODS.Booster({
+-- 	key="test",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Consumable({
+-- 	key="testt",
+-- 	set="Tarot",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Consumable({
+-- 	key="testp",
+-- 	set="Planet",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Consumable({
+-- 	key="tests",
+-- 	set="Spectral",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Edition({
+-- 	key="test",
+-- 	shader=false,
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Enhancement({
+-- 	key="test",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Joker({
+-- 	key="test",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Voucher({
+-- 	key="test",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Challenge({
+-- 	key="test",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+
+-- SMODS.Sticker({
+-- 	key="test",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Seal({
+-- 	key="test",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Achievement({
+-- 	key="test",
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- 	unlock_condition = function(self, args)
+-- 		return false
+-- 	end,
+-- })
+
+-- SMODS.Stake({
+-- 	key="test",
+-- 	applied_stakes = {},
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Rank({
+-- 	key="test",
+-- 	card_key = "X_X",
+-- 	pos = {x=1,y=0},
+-- 	nominal = 999,
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.Suit({
+-- 	key="test",
+-- 	card_key = "X_X",
+-- 	pos = {x=1,y=0},
+-- 	ui_pos = 0,
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+-- SMODS.PokerHand({
+-- 	key="test",
+-- 	mult=1,
+-- 	chips=1,
+-- 	l_mult=999,
+-- 	l_chips=999,
+-- 	example=  {
+--         { 'S_K', false }, -- King of Spades, does not score
+--         { 'S_9', true }, -- 9 of Spades, scores
+--         { 'D_9', true }, -- 9 of Diamonds, scores
+--         { 'H_6', false }, -- 6 of Hearts, does not score
+--         { 'D_3', false } -- 3 of Diamonds, does not score
+--     },
+-- 	evaluate = function(parts, hand) 
+-- 		return {}
+-- 	end,
+-- 	loc_txt={ 
+-- 		name="test",
+-- 		text={"test item"}
+-- 	},
+-- 	credit = {
+-- 		art = "Aurora Aquir",
+-- 		code = "Aurora Aquir",
+-- 		concept = "Aurora Aquir"
+-- 	},
+-- })
+
+
+-- 
 ----------------------------------------------
 ------------MOD CODE END----------------------

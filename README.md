@@ -5,6 +5,13 @@ Made by AuroraAquir.
 
 Originally used exclusively in [CelesteCardCollection](https://github.com/AuroraKy/CelesteCardCollection).
 
+Currently supported: Joker Cards, Decks, Vouchers, Tarot Cards, Planet Cards, Spectral Cards, Enhancements, Editions, Boosters
+
+Currently **NOT** supported (Will probably add in the future): Challenges, Blinds, Stickers, Seals
+
+Probably will never be supported: Achievements, Ranks, Suits, Stakes, PokerHands. None of these really have collections to view them at.
+
+
 To use this mod depend on it in your mod.json by adding "3xCredits (==1.*~)" to dependencies
 
 Example:
