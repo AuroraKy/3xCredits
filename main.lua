@@ -1,0 +1,119 @@
+----------------------------------------------
+------------MOD CODE -------------------------
+
+-- Code to allow for credits
+
+local generate_UIBox_ability_table_ref = Card.generate_UIBox_ability_table
+
+function Card.generate_UIBox_ability_table(self, vars_only)
+	local AUT = generate_UIBox_ability_table_ref(self, vars_only)
+	if not vars_only then AUT.mod_credit = self.config.center.credit or nil end
+	return AUT
+end
+
+-- local card_h_popup_ref = G.UIDEF.card_h_popup
+
+-- function G.UIDEF.card_h_popup(card)
+-- 	local ret = card_h_popup_ref(card)
+
+--     if card.ability_UIBox_table and ret.nodes then
+-- 		local AUT = card.ability_UIBox_table
+-- 		if AUT.mod_credit then
+-- 			local main = ret.nodes[1]
+-- 			local thing = {n=G.UIT.ROOT,  config={align = "cm", r = 0.1, padding = 0.05, emboss = 0.05}, nodes={
+-- 				{n=G.UIT.R, config={align = "cm", colour = lighten(G.C.JOKER_GREY, 0.5), r = 0.1, padding = 0.05, emboss = 0.05}, nodes={
+-- 				{n=G.UIT.R, config={align = "cm", colour = lighten(G.C.GREY, 0.15), r = 0.1, padding=0.2}, nodes={
+-- 				{n=G.UIT.R, config={align = "cm"}, nodes={
+-- 					{n=G.UIT.O, config={object = DynaText({string = "Art by ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
+-- 					{n=G.UIT.O, config={object = DynaText({string = AUT.mod_credit.art, colours = {G.C.3XC_COLOUR}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}}}},
+-- 				{n=G.UIT.R, config={align = "cm"}, nodes={
+-- 					{n=G.UIT.O, config={object = DynaText({string = "Code by ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
+-- 					{n=G.UIT.O, config={object = DynaText({string = AUT.mod_credit.code, colours = {G.C.3XC_COLOUR }, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}}}},
+-- 				{n=G.UIT.R, config={align = "cm"}, nodes={
+-- 					{n=G.UIT.O, config={object = DynaText({string = "Concept by ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
+-- 					{n=G.UIT.O, config={object = DynaText({string = AUT.mod_credit.concept, colours = {G.C.3XC_COLOUR }, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}}}},
+-- 			}}}}}}
+
+-- 			main.children = main.children or {}
+-- 			main.children.credits = UIBox{
+-- 				definition = thing,
+-- 				config = {offset = {x=  0.03,y=0}, align = 'cr', parent = main}
+-- 			}
+-- 			main.children.credits:align_to_major()
+-- 		end
+-- 	end
+-- 	return ret
+-- end
+
+
+
+function c3x_generate_deck_credit_payload()
+	local obj = Moveable()
+	obj= UIBox{
+		definition = G.UIDEF.c3x_generate_credits(G.GAME.viewed_back.effect.center.credit),
+		config = {offset = {x=0,y=0}, align = 'cm'}
+	}
+
+	local e = {n=G.UIT.R, config={align = "cm"}, nodes={
+		{n=G.UIT.O, config={id = G.GAME.viewed_back.name, func = 'RUN_SETUP_check_back_credits', object = obj}}
+	}}  
+	return e
+end
+
+
+function G.UIDEF.c3x_generate_credits(credits)
+	return {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={
+	{n=G.UIT.R, config={align = "cm"}, nodes={
+		{n=G.UIT.O, config={object = DynaText({string = credits and "Art by " or " ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
+		{n=G.UIT.O, config={object = DynaText({string = credits and credits.art or " ", colours = {SMODS.Gradients.c3x_COLOUR}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}}}},
+	{n=G.UIT.R, config={align = "cm"}, nodes={
+		{n=G.UIT.O, config={object = DynaText({string = credits and "Code by " or "", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
+		{n=G.UIT.O, config={object = DynaText({string = credits and credits.code or G.GAME.viewed_back.effect.center.mod and "Modded Deck" or "Vanilla Deck", colours = {credits and SMODS.Gradients.c3x_COLOUR or G.C.DARK_EDITION}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}}}},
+	{n=G.UIT.R, config={align = "cm"}, nodes={
+		{n=G.UIT.O, config={object = DynaText({string = credits and "Concept by " or " ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
+		{n=G.UIT.O, config={object = DynaText({string = credits and credits.concept or " ", colours = {SMODS.Gradients.c3x_COLOUR}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}}}},}}
+end
+
+function G.FUNCS.RUN_SETUP_check_back_credits(e)
+	if G.GAME.viewed_back.name ~= e.config.id then 
+		--removes the UI from the previously selected back and adds the new one
+		if e.config.object then e.config.object:remove() end 
+		e.config.object = UIBox{
+			definition = G.UIDEF.c3x_generate_credits(G.GAME.viewed_back.effect.center.credit),
+			config = {offset = {x=0,y=0}, align = 'cm', parent = e}
+		}
+		e.config.id = G.GAME.viewed_back.name
+		e.config.object:recalculate()
+	end
+end
+
+C3XHELPER = {}
+
+function C3XHELPER.has_value (tab, val)
+	for index, value in ipairs(tab) do
+		if value == val then
+			return true
+		end
+	end
+ 
+	return false
+ end
+ 
+
+SMODS.Atlas({
+    key = "modicon",
+    path = "c3x_icon.png",
+    px = 34,
+    py = 34
+}):register()
+
+SMODS.Gradient({
+    key="c3x_COLOUR",
+    update=function(self, dt)
+		self[1] = 0.0+0.1*math.sin(G.TIMERS.REAL*1.3)
+        self[3] = 0.8+0.1*(0.0- math.sin(G.TIMERS.REAL*1.3))
+        self[2] = math.max(self[3], self[1])
+	end
+})
+----------------------------------------------
+------------MOD CODE END----------------------
