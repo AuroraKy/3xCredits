@@ -45,6 +45,14 @@ AUT.mod_credit and (G.STATE ~= G.STATES.SHOP or G.SETTINGS.paused or C3XHELPER.h
 '''
 match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "table.insert(ret_val.nodes[1].nodes[1].nodes[1].nodes, 3, multi_boxes[i])"
+position = "at"
+payload = "table.insert(ret_val.nodes[2].nodes[1].nodes[1].nodes, 3, multi_boxes[i])"
+match_indent = true
+
 
 # The thing that makes the credits appear
 [[patches]]
