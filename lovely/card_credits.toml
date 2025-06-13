@@ -6,46 +6,6 @@ dump_lua = true
 priority = 0
 
 
-
-# THE GREAT EQUALIZER 1
-[[patches]]
-[patches.pattern]
-target = "functions/UI_definitions.lua"
-pattern = '''info_boxes = {{n=G.UIT.R, config = {align="cm", padding = 0.05, card_pos = card.T.x }, nodes = info_cols}}'''
-position = "after"
-payload = '''
-local finalstr = ""
-if AUT.mod_credit and (G.STATE ~= G.STATES.SHOP or G.SETTINGS.paused or C3XHELPER.has_value(G.jokers.cards, card))  then
-	local artstr = "Art by " .. AUT.mod_credit.art
-	local codestr = "Code by " .. AUT.mod_credit.code
-
-	finalstr = "Concept by " .. AUT.mod_credit.concept
-	if string.len(finalstr) < string.len(codestr) then
-		finalstr = codestr
-	end
-	if string.len(finalstr) < string.len(artstr) then
-		finalstr = artstr
-	end
-end
-'''
-match_indent = true
-
-# THE GREAT EQUALIZER 2
-[[patches]]
-[patches.pattern]
-target = "functions/UI_definitions.lua"
-pattern = '''{n=G.UIT.C, config={align = "cm", func = 'show_infotip',object = Moveable(),ref_table = next(info_boxes) and info_boxes or nil}, nodes={'''
-position = "before"
-payload = '''
-AUT.mod_credit and (G.STATE ~= G.STATES.SHOP or G.SETTINGS.paused or C3XHELPER.has_value(G.jokers.cards, card)) and ({n=G.UIT.C,  config={align = "cm", r = 0.1, padding = 0.3, emboss = 0.10}, nodes={ 
-	{n=G.UIT.R, config={align = "cm"}, nodes = {
-		{n=G.UIT.O, config={object = DynaText({string = finalstr, colours = {{0,0,0,0}}, shadow = false, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}}
-	}}
-}}) or nil,
-'''
-match_indent = true
-
-
 # The thing that makes the credits appear
 [[patches]]
 [patches.regex]

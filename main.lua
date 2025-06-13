@@ -98,6 +98,37 @@ function C3XHELPER.has_value (tab, val)
  
 	return false
  end
+
+local align_h_popup_ref = Card.align_h_popup
+function Card:align_h_popup()
+	local ret = align_h_popup_ref(self)
+	if not self.config.center.credit then return ret end
+	if (G.STATE ~= G.STATES.SHOP or G.SETTINGS.paused or C3XHELPER.has_value(G.jokers.cards, self)) then
+		local finalstr = ""
+		local artstr = "Art by " .. self.config.center.credit.art or ""
+		local codestr = "Code by " .. self.config.center.credit.code or ""
+
+		finalstr = "Concept by " .. self.config.center.credit.concept or ""
+		if string.len(finalstr) < string.len(codestr) then
+			finalstr = codestr
+		end
+		if string.len(finalstr) < string.len(artstr) then
+			finalstr = artstr
+		end
+		-- create a dummy uibox we delete immediately after
+		local dummy = UIBox {
+			definition = {n=G.UIT.C,  config={align = "cm", r = 0.1, padding = 0.3, emboss = 0.10}, nodes={ 
+				{n=G.UIT.R, config={align = "cm"}, nodes = {
+					{n=G.UIT.O, config={object = DynaText({string = finalstr, colours = {{0,0,0,0}}, shadow = false, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}}
+				}}
+			}},
+			config = { align = "cm" }
+		}
+		ret.offset.x = ret.offset.x + (dummy.T.w/2)
+		dummy:remove()
+	end
+	return ret
+end
  
 
 SMODS.Atlas({
