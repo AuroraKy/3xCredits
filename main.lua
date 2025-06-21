@@ -24,13 +24,13 @@ end
 -- 				{n=G.UIT.R, config={align = "cm", colour = lighten(G.C.JOKER_GREY, 0.5), r = 0.1, padding = 0.05, emboss = 0.05}, nodes={
 -- 				{n=G.UIT.R, config={align = "cm", colour = lighten(G.C.GREY, 0.15), r = 0.1, padding=0.2}, nodes={
 -- 				{n=G.UIT.R, config={align = "cm"}, nodes={
--- 					{n=G.UIT.O, config={object = DynaText({string = "Art by ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
+-- 					{n=G.UIT.O, config={object = DynaText({string = localize("c3x_art_by"), colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
 -- 					{n=G.UIT.O, config={object = DynaText({string = AUT.mod_credit.art, colours = {G.C.3XC_COLOUR}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}}}},
 -- 				{n=G.UIT.R, config={align = "cm"}, nodes={
--- 					{n=G.UIT.O, config={object = DynaText({string = "Code by ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
+-- 					{n=G.UIT.O, config={object = DynaText({string = localize("c3x_code_by"), colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
 -- 					{n=G.UIT.O, config={object = DynaText({string = AUT.mod_credit.code, colours = {G.C.3XC_COLOUR }, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}}}},
 -- 				{n=G.UIT.R, config={align = "cm"}, nodes={
--- 					{n=G.UIT.O, config={object = DynaText({string = "Concept by ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
+-- 					{n=G.UIT.O, config={object = DynaText({string = localize("c3x_concept_by"), colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}},
 -- 					{n=G.UIT.O, config={object = DynaText({string = AUT.mod_credit.concept, colours = {G.C.3XC_COLOUR }, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33})}}}},
 -- 			}}}}}}
 
@@ -64,13 +64,13 @@ end
 function G.UIDEF.c3x_generate_credits(credits)
 	return {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={
 	{n=G.UIT.R, config={align = "cm"}, nodes={
-		{n=G.UIT.O, config={object = DynaText({string = credits and "Art by " or " ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
+		{n=G.UIT.O, config={object = DynaText({string = credits and localize("c3x_art_by") or " ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
 		{n=G.UIT.O, config={object = DynaText({string = credits and credits.art or " ", colours = {SMODS.Gradients.c3x_COLOUR}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}}}},
 	{n=G.UIT.R, config={align = "cm"}, nodes={
-		{n=G.UIT.O, config={object = DynaText({string = credits and "Code by " or "", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
+		{n=G.UIT.O, config={object = DynaText({string = credits and localize("c3x_code_by") or "", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
 		{n=G.UIT.O, config={object = DynaText({string = credits and credits.code or G.GAME.viewed_back.effect.center.mod and "Modded Deck" or "Vanilla Deck", colours = {credits and SMODS.Gradients.c3x_COLOUR or G.C.DARK_EDITION}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}}}},
 	{n=G.UIT.R, config={align = "cm"}, nodes={
-		{n=G.UIT.O, config={object = DynaText({string = credits and "Concept by " or " ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
+		{n=G.UIT.O, config={object = DynaText({string = credits and localize("c3x_concept_by") or " ", colours = {G.C.WHITE}, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}},
 		{n=G.UIT.O, config={object = DynaText({string = credits and credits.concept or " ", colours = {SMODS.Gradients.c3x_COLOUR}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.25})}}}},}}
 end
 
