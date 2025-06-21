@@ -105,10 +105,10 @@ function Card:align_h_popup()
 	if not self.config.center.credit then return ret end
 	if (G.STATE ~= G.STATES.SHOP or G.SETTINGS.paused or C3XHELPER.has_value(G.jokers.cards, self)) then
 		local finalstr = ""
-		local artstr = "Art by " .. self.config.center.credit.art or ""
-		local codestr = "Code by " .. self.config.center.credit.code or ""
+		local artstr = (localize("c3x_art_by") .. self.config.center.credit.art) or ""
+		local codestr = (localize("c3x_code_by") .. self.config.center.credit.code) or ""
 
-		finalstr = "Concept by " .. self.config.center.credit.concept or ""
+		finalstr = (localize("c3x_concept_by") .. self.config.center.credit.concept) or ""
 		if string.len(finalstr) < string.len(codestr) then
 			finalstr = codestr
 		end
@@ -148,6 +148,34 @@ SMODS.Gradient({
 })
 
 -- Tests
+
+-- Multibox test
+-- SMODS.Joker({
+--  	key="test",
+--  	loc_txt={ 
+--  		name="test",
+--  		text={
+--         {
+--             "{C:green}#1# in #2#{} chance to",
+--             "create a {C:dark_edition}Negative{} copy of",
+--             "a random Joker in your possession", "at the end of the shop"
+--         },
+--         {
+--             "{C:green}#1# in #3#{} chance to",
+--             "destroy all {C:dark_edition}Negative{} Jokers",
+--             "at the end of the shop"
+--         },
+--         {
+--             "{C:green}#1# in #4#{} chance to",
+--             "become {C:dark_edition}Negative{}"
+--         }}
+--  	},
+--  	credit = {
+--  		art = "Aurora Aquir",
+--  		code = "Aurora Aquir",
+--  		concept = "Aurora Aquir"
+--  	},
+--  })
 
 -- SMODS.Booster({
 -- 	key="test",
