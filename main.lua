@@ -105,10 +105,10 @@ function Card:align_h_popup()
 	if not self.config.center.credit then return ret end
 	if (G.STATE ~= G.STATES.SHOP or G.SETTINGS.paused or C3XHELPER.has_value(G.jokers.cards, self)) then
 		local finalstr = ""
-		local artstr = (localize("c3x_art_by") .. self.config.center.credit.art) or ""
-		local codestr = (localize("c3x_code_by") .. self.config.center.credit.code) or ""
+		local artstr = localize("c3x_art_by") .. (self.config.center.credit.art or "") 
+		local codestr = localize("c3x_code_by") .. (self.config.center.credit.code or "") 
 
-		finalstr = (localize("c3x_concept_by") .. self.config.center.credit.concept) or ""
+		finalstr = localize("c3x_concept_by") .. (self.config.center.credit.concept or "")
 		if string.len(finalstr) < string.len(codestr) then
 			finalstr = codestr
 		end
